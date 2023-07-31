@@ -32,6 +32,7 @@ const totalSlice = createSlice({
           return accumulator;
         }, 0);
         state.total.push({
+          id: item,
           category: item,
           active: activeCount,
           archived: archivedCount,

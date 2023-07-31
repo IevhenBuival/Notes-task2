@@ -1,11 +1,10 @@
 import React from "react";
+interface IHeaderPart {
+  className: string;
+}
 
-function HeaderPart() {
-  return (
-    <header className="flex justify-between px-5 shadow-md bg-orange-300 text-blue-800">
-      header
-    </header>
-  );
+function HeaderPart({ className }: IHeaderPart) {
+  return <header className={className}>header</header>;
 }
 
 export default HeaderPart;

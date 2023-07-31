@@ -26,14 +26,10 @@ function HomePage() {
     );
   };
   return (
-    <div>
-      {filterState.filter}
-      <HeaderPart />
-      <MainPart />
+    <div className="flex h-screen flex-col max-h-screen bg-orange-300 text-blue-800">
+      <HeaderPart className="flex justify-between px-5 shadow-md" />
+      <MainPart className="flex-1  overflow-auto px-5  shadow-md max-h-full" />
       <FooterPart />
-
-      {JSON.stringify(notesState.notes)}
-      <button onClick={handleFiltrelect}>All</button>
     </div>
   );
 }
