@@ -1,15 +1,14 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { INote } from "../types/notes";
 import { ITotal } from "../types/total";
-import TableField from "./TableField";
-import { NodesKey } from "../types/tableKeys";
+
 import TableRow from "./TableRow";
 
 interface ITableComponent {
   className?: string;
   table: Array<INote | ITotal>;
   colSpan: { [x: string]: string };
-  actions?: true;
+  actions?: boolean;
 }
 function TableComponent({
   className,
@@ -25,7 +24,7 @@ function TableComponent({
       key={item.id}
       colSpan={colSpan}
       rowdata={item}
-      actions={true}
+      actions={actions}
       rowClassName={rowClass + " my-2"}
       colClassName={colClass}
     />
@@ -38,7 +37,7 @@ function TableComponent({
           colSpan={colSpan}
           rowdata={table[0]}
           hat={true}
-          actions={true}
+          actions={actions}
           rowClassName={rowClass + " my-2"}
           colClassName={colClass}
         />

@@ -2,10 +2,11 @@ import React, { ReactNode } from "react";
 import { INote } from "../types/notes";
 import { ITotal } from "../types/total";
 import TableField from "./TableField";
+import TableActions from "./TableActions";
 
 interface ITableRow {
   rowdata: INote | ITotal;
-  actions?: true;
+  actions?: boolean;
   hat?: boolean;
   colSpan: { [x: string]: string };
   rowClassName?: string;
@@ -47,13 +48,20 @@ function TableRow({
   return (
     <div className={rowClassName}>
       {createBaseFields(colSpan, rowdata, hat)}
-      {actions && (
-        <TableField
-          key={hat ? "hatActions" : rowdata.id + "Action"}
-          fieldText="Actions"
-          className={colClassName + " col-span-2"}
-        />
-      )}
+      {actions &&
+        (hat ? (
+          <TableField
+            key={"hatActions"}
+            fieldText={"Actions"}
+            className={colClassName + " col-span-2 " + (hat ? "" : "bg-white ")}
+          />
+        ) : (
+          <TableActions
+            key={rowdata.id + "Actions"}
+            actionHolder={rowdata}
+            className={"col-span-2 flex rounded " + colClassName}
+          />
+        ))}
     </div>
   );
 }
