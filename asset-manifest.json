@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Notes-task2/static/css/main.f390f41d.css",
+    "main.js": "/Notes-task2/static/js/main.a15ae0e2.js",
+    "index.html": "/Notes-task2/index.html",
+    "main.f390f41d.css.map": "/Notes-task2/static/css/main.f390f41d.css.map",
+    "main.a15ae0e2.js.map": "/Notes-task2/static/js/main.a15ae0e2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f390f41d.css",
+    "static/js/main.a15ae0e2.js"
+  ]
+}
