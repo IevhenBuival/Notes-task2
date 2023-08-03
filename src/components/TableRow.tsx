@@ -3,6 +3,7 @@ import { INote } from "../types/notes";
 import { ITotal } from "../types/total";
 import TableField from "./TableField";
 import TableActions from "./TableActions";
+import { dateToString } from "../utils/dateToString";
 
 interface ITableRow {
   rowdata: INote | ITotal;
@@ -32,7 +33,9 @@ function TableRow({
         rows.push(
           <TableField
             key={hat ? "hat" + key : "" + rowdata.id + key}
-            fieldText={hat ? key : "" + rowdata[key as keyof typeof rowdata]}
+            fieldText={
+              hat ? key : dateToString(rowdata[key as keyof typeof rowdata])
+            }
             className={
               colClassName +
               " " +
@@ -46,7 +49,12 @@ function TableRow({
     return rows.map((el) => el);
   };
   return (
-    <div className={rowClassName}>
+    <div
+      className={
+        rowClassName +
+        (!hat && actions && rowdata.archived ? " opacity-50 line-through" : "")
+      }
+    >
       {createBaseFields(colSpan, rowdata, hat)}
       {actions &&
         (hat ? (
@@ -58,8 +66,8 @@ function TableRow({
         ) : (
           <TableActions
             key={rowdata.id + "Actions"}
-            actionHolder={rowdata}
-            className={"col-span-2 flex rounded " + colClassName}
+            actionHolder={rowdata as INote}
+            className={"col-span-2 flex"}
           />
         ))}
     </div>

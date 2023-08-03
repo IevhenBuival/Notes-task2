@@ -16,7 +16,7 @@ function TableComponent({
   colSpan,
   actions,
 }: ITableComponent) {
-  const rowClass = "grid grid-cols-12 gap-4  divide-blue-200 border-slate-100";
+  const rowClass = "grid grid-cols-12 gap-4 border-slate-100";
   const colClass = "bold border radius rounded-2xl text-center shadow-md";
 
   const FiltredTable = table.map((item) => (

@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import TableComponent from "../../components/TableComponent";
-import { defaultInote } from "../../types/notes";
 import { useStoreSelector } from "../../redux/hooks";
+import { notes } from "../../redux/store/data/data";
+import { INote } from "../../types/notes";
 
 interface IMainPart {
   className: string;
 }
 
 function MainPart({ className }: IMainPart) {
-  const notesState = useStoreSelector((state) => state.notes);
+  const notesState = useStoreSelector((state) => {
+    return state.notes;
+  });
+  const filterState = useStoreSelector((state) => {
+    return state.filter;
+  });
+
+  const filtred = () => {
+    if (filterState.filter === "ACTIVE")
+      return notesState.notes.filter((el) => el.archived === false);
+    if (filterState.filter === "ARCHIVE")
+      return notesState.notes.filter((el) => el.archived);
+    return notesState.notes;
+  };
 
   const colSpan: { [x: string]: string } = {
     id: "",
@@ -25,7 +39,7 @@ function MainPart({ className }: IMainPart) {
   return (
     <TableComponent
       className={className}
-      table={notesState.notes}
+      table={filtred()}
       colSpan={colSpan}
       actions
     />

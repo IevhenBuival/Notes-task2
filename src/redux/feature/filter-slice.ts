@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { FilterType } from "../../types/filter";
 
 interface FilterState {
@@ -13,18 +13,15 @@ const filterSlice = createSlice({
   name: "filter",
   initialState: initialState,
   reducers: {
-    setAll(state) {
-      state.filter = "ALL";
+    setFilter(state, action: PayloadAction<FilterType>) {
+      state.filter = action.payload;
     },
     setActive(state) {
       state.filter = "ACTIVE";
     },
-    setArchive(state) {
-      state.filter = "ARCHIVE";
-    },
   },
 });
 
-export const { setAll } = filterSlice.actions;
+export const { setFilter, setActive } = filterSlice.actions;
 const filterReduser = filterSlice.reducer;
 export default filterReduser;

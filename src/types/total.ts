@@ -6,3 +6,8 @@ export interface ITotal {
   active: number;
   archived: number;
 }
+
+export interface INoteTotal {
+  category: CategoryType;
+  archived: boolean;
+}
