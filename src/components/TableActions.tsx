@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { INote, defaultInote } from "../types/notes";
+import { INote } from "../types/notes";
 
 import SvgButton from "./SvgButton";
 import { ArchiveIcon, EditIcon, RemoveIcon } from "./icons";

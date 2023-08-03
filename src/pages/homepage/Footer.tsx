@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TableComponent from "../../components/TableComponent";
 import { useStoreSelector } from "../../redux/hooks";
 

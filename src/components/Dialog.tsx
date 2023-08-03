@@ -10,6 +10,7 @@ import {
   editNote,
   recalcTotalNote,
 } from "../redux/feature/notes-slice";
+import { datasRegExp } from "../utils/dates.helper";
 
 interface IDialog {
   data: INote;
@@ -59,11 +60,13 @@ function Dialog({ data, hideDialog }: IDialog) {
 
   async function onSubmit(inputData: INote) {
     try {
+      const dates = datasRegExp(inputData.content);
       const newData: INote = {
         ...data,
         title: inputData.title,
         content: inputData.content,
         category: selectedValue,
+        dates: dates,
       };
       if (data.id === "") {
         dispatch(addNote(newNote(newData)));
@@ -112,7 +115,7 @@ function Dialog({ data, hideDialog }: IDialog) {
         </InputArea>
         <InputArea title="Category: ">
           <Select
-            className="form-select w-full py-0 border rounded border-sky-400 mb-2 shadow-md focus:outline-none focus:ring focus:ring-violet-300"
+            className="form-select w-full py-2 border rounded border-sky-400 mb-2 shadow-md focus:outline-none focus:ring focus:ring-violet-300"
             optionList={optionList}
             value={selectedValue}
             handleChange={handleChange}
@@ -120,7 +123,7 @@ function Dialog({ data, hideDialog }: IDialog) {
         </InputArea>
         <InputArea title="Note: ">
           <textarea
-            className="w-full py-0 border rounded border-sky-400 mb-2 shadow-md focus:outline-none focus:ring focus:ring-violet-300"
+            className="w-full px-3 py-1 border rounded border-sky-400 mb-2 shadow-md focus:outline-none focus:ring focus:ring-violet-300"
             placeholder="Write your note here"
             {...register("content")}
           />

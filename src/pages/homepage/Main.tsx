@@ -1,9 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 
 import TableComponent from "../../components/TableComponent";
 import { useStoreSelector } from "../../redux/hooks";
-import { notes } from "../../redux/store/data/data";
-import { INote } from "../../types/notes";
 
 interface IMainPart {
   className: string;

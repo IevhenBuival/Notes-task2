@@ -38,7 +38,7 @@ function TableRow({
             }
             className={
               colClassName +
-              " " +
+              " truncate px-2 " +
               (hat === false ? "bg-white " : "") +
               fieldSettings[key]
             }

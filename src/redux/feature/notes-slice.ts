@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CategoryType, INote } from "../../types/notes";
 import { notes } from "../store/data/data";
-import { INoteTotal, ITotal } from "../../types/total";
+import { ITotal } from "../../types/total";
 
 export const searchIndexById = (notes: INote[], searchKey: string) => {
   const index = notes.findIndex((el) => {
